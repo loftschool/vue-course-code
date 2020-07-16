@@ -1,0 +1,23 @@
+.thumbs {
+  position: relative;
+}
+.thumbs__item {
+  height: 100px;
+  transition: .2s;
+  overflow: hidden;
+  &.active,
+  &:hover {
+    outline: 3px solid #f29400;
+  }
+}
+
+.thumbs__link {
+  display: block;
+  height: 100%;
+}
+
+.thumbs__pic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

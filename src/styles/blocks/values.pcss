@@ -1,0 +1,56 @@
+.values {
+  position: relative;
+  &:before {
+    content: "";
+    position: absolute;
+    background: url('~images/decor/bag.jpg') left bottom / contain no-repeat;
+    display: block;
+    bottom: 9%;
+    height: 68%;
+    width: 69%;
+    left: -19%;
+    max-height: 630px;
+  }
+}
+
+.values__wrapper {
+  position: relative;
+}
+
+.values__title {
+  margin-bottom: 82px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.values__title-container {
+  width: 38%;
+  margin-left: 6%;
+}
+
+.values__title-text {
+  font-size: 30px;
+  font-weight: 700;
+  margin-bottom: 55px;
+}
+
+.values__content {
+  color: rgba($text-color, .5);
+  font-weight: 600;
+  line-height: 1.8;
+  max-width: 54%;
+}
+
+.values__widget {
+  display: flex;
+  position: relative;  
+  padding-left: 32%;
+}
+
+.values__widget-container {
+  width: 66%;
+  @include tablets {
+    width: 95%;
+  }
+}
