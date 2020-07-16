@@ -1,5 +1,8 @@
 .values {
   position: relative;
+}
+
+.values__container {
   &:before {
     content: "";
     position: absolute;
@@ -8,7 +11,7 @@
     bottom: 9%;
     height: 68%;
     width: 69%;
-    left: -19%;
+    left: -30%;
     max-height: 630px;
   }
 }
@@ -44,12 +47,13 @@
 
 .values__widget {
   display: flex;
-  position: relative;  
+  position: relative;
   padding-left: 32%;
 }
 
 .values__widget-container {
   width: 66%;
+
   @include tablets {
     width: 95%;
   }
