@@ -1,0 +1,97 @@
+script(type="text/x-template")#controls
+  div
+    inputComp(
+      v-model="text"
+    )
+    span {{text}}
+
+    hr
+    
+    checkComp(
+      v-model="yesNo"
+    )
+    span {{yesNo}}
+
+    hr
+
+    checkGroup(
+      v-model="group"
+    )
+    pre {{group}}
+
+    radioComp(
+      v-model="oneOf"
+    )
+    pre {{oneOf}}
+
+
+script(type="text/x-template")#input
+  div
+    input(
+      type="text" 
+      :value="value"
+      @input="$emit('keyup', $event.target.value)"
+    )
+
+script(type="text/x-template")#checkbox
+  div
+    label
+      input(
+        type="checkbox"
+        :checked="checked"
+        @change="$emit('change', $event.target.checked)"
+      )
+      span Да/нет
+
+script(type="text/x-template")#check-group
+  div
+    div
+      label
+        input(
+          type="checkbox"
+          value="red"
+          v-model="inner"
+          @change="expose"
+        )
+        span red
+    div
+      label
+        input(
+          type="checkbox"
+          value="green"
+          v-model="inner"
+          @change="expose"
+        )
+        span green
+    div
+      label
+        input(
+          type="checkbox"
+          value="blue"
+          v-model="inner"
+          @change="expose"
+        )
+        span blue
+
+script(type="text/x-template")#radio
+  div
+    div
+      label
+        input(
+          type="radio"
+          value="visa"
+          name="payment"
+          @change="handleChange"
+          :checked="value === 'visa'"
+        )
+        span visa
+    div
+      label
+        input(
+          type="radio"
+          value="master"
+          name="payment"
+          @change="handleChange"
+          :checked="value === 'master'"
+        )
+        span master

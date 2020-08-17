@@ -3,8 +3,17 @@ script(type="text/x-template")#slider-container
     .slider__header
       .section-title Что обо мне говорят
       .slider__buttons
-        button(type="button" @click="slide('prev')").slider__btn.round-btn.round-btn--pointer--right
-        button(type="button" @click="slide('next')").slider__btn.round-btn.round-btn--pointer--left
+        button(
+          type="button" 
+          @click="slide('prev')"
+          :disabled="!buttons.prev"
+        ).slider__btn.round-btn.round-btn--pointer--right
+
+        button(
+          type="button" 
+          @click="slide('next')"
+          :disabled="!buttons.next"
+        ).slider__btn.round-btn.round-btn--pointer--left
     swiper(ref="slider" :options="sliderOptions")
       swiper-slide(v-for="review in reviews" :key="review.id")
         .quote
