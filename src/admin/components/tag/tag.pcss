@@ -2,9 +2,24 @@
   white-space: nowrap;
   padding: 6px 20px;
   border-radius: 50px;
-  background: #fff;
+  background: #f4f4f4;
   color: rgba(40, 51, 64, 0.5);
   margin-right: 8px;
   margin-bottom: 8px;
   font-size: 13px;
+
+  &.interactive {
+    padding-right: 34px;
+    position: relative;
+
+    .remove {
+      position: absolute;
+      right: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: svg-load('cross.svg', fill=$text-color) center center no-repeat;
+      width: 10px;
+      height: 10px;
+    }
+  }
 }
