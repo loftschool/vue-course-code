@@ -35,36 +35,35 @@ export default {
   props: {
     value: {
       type: String,
-      default: ""
+      default: "",
     },
     errorText: {
       type: String,
-      default: ""
+      default: "",
     },
-    editmodeByDefault: {
-      type: Boolean
-    },
-    blocked: Boolean
+    editModeByDefault: Boolean,
+    blocked: Boolean,
   },
   data() {
     return {
-      editmode: this.editmodeByDefault,
-      title: this.value
+      editmode: this.editModeByDefault,
+      title: this.value,
     };
   },
   methods: {
     onApprove() {
+      if (this.title.trim() === "") return false;
       if (this.title.trim() === this.value.trim()) {
         this.editmode = false;
       } else {
         this.$emit("approve", this.value);
       }
-    }
+    },
   },
   components: {
     icon: () => import("components/icon"),
-    appInput: () => import("components/input")
-  }
+    appInput: () => import("components/input"),
+  },
 };
 </script>
 

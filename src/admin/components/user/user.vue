@@ -1,6 +1,6 @@
 <template>
   <div class="user-component">
-    <avatar size="2.7" :src="userPic" class="avatar" />
+    <avatar size="2.7" :src="userPic" />
     <div class="username">Владимир Астаханов</div>
   </div>
 </template>
@@ -9,7 +9,9 @@
 import avatar from "../avatar";
 
 export default {
-  components: { avatar },
+  components: {
+    avatar,
+  },
   computed: {
     userPic() {
       return require("../../../images/content/user.jpg").default;
@@ -20,14 +22,14 @@ export default {
 
 <style lang="postcss">
 .user-component {
+  display: flex;
   font-size: 18px;
   font-weight: 600;
-  display: flex;
   align-items: center;
   color: #fff;
 }
-.avatar {
-  margin-right: 10px;
-}
 
+.username {
+  margin-left: 10px;
+}
 </style>

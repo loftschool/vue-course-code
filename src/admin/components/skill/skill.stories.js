@@ -1,10 +1,10 @@
 import skill from "./skill";
-import {action} from "@storybook/addon-actions";
+import { action } from "@storybook/addon-actions";
 
 const methods = {
-  onRemove: action("onRemove"),
-  onApprove: action("onApprove")
-};
+  onApprove: action("onApprove"),
+  onRemove: action("onRemove")
+}
 
 export default {
   title: "skill",
@@ -13,15 +13,17 @@ export default {
 
 export const defaultView = () => ({
   components: { skill },
-  data: () => ({
-    skill: {
-      id: 0,
-      title: "Git",
-      percent: "80",
-    },
-  }),
+  data() {
+    return {
+      skill: {
+        id: 0,
+        title: "Test",
+        percent: 50
+      }
+    }
+  },
   template: `
-    <skill :skill="skill" @remove="onRemove" @approve="onApprove"/>
+    <skill @approve="onApprove" @remove="onRemove" :skill="skill" />
   `,
   methods
 });

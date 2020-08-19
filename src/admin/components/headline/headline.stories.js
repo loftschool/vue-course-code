@@ -8,8 +8,8 @@ export default {
 export const defaultView = () => ({
   components: {headline},
   template: `
-    <headline>
-      <h1>Content</h1>
-    </headline> 
+    <headline title="Панель администрирования">
+      <h4>Content</h4> 
+    </headline>
   `
 });

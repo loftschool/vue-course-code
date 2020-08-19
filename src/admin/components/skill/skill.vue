@@ -1,55 +1,55 @@
 <template>
   <div class="skill-component" v-if="editmode === false">
     <div class="title">{{skill.title}}</div>
-    <div class="percent">{{skill.percent}} %</div>
+    <div class="percent">{{skill.percent}}</div>
     <div class="buttons">
-      <icon symbol="pencil" class="btn" grayscale @click="editmode = true" />
-      <icon symbol="trash" class="btn" @click="$emit('remove', skill)" grayscale />
+      <icon symbol="pencil" class="btn" @click="editmode = true" grayscale />
+      <icon symbol="trash" class="btn" @click="$emit('remove', skill.id)" grayscale />
     </div>
   </div>
-  <div class="skill-component editmode" v-else>
+
+  <div class="skill-component" v-else>
     <div class="title">
-      <app-input no-side-paddings v-model="currentSkill.title"/>
+      <app-input noSidePaddings v-model="currentSkill.title" />
     </div>
     <div class="percent">
-      <div class="percent-input">
-        <app-input type="number" min="0" max="100" maxlength="3" v-model="currentSkill.percent" />
-      </div>
+      <app-input v-model="currentSkill.percent" type="number" min="0" max="100" maxlength="3" />
     </div>
     <div class="buttons">
-      <icon class="btn" symbol="tick"  @click="$emit('approve', skill)"/>
-      <icon class="btn" symbol="cross" @click="editmode = false"/>
+      <icon symbol="tick" class="btn" @click="$emit('approve', currentSkill)" />
+      <icon symbol="cross" class="btn" @click="editmode = false" />
     </div>
   </div>
 </template>
 
 <script>
-  import input from "../input";
-  import icon from "../icon"
-  export default {
-    props: {
-      skill: {
-        type: Object,
-        default: () => {},
-        required: true
-      }
-    },
-    components: {
-      icon,
-      appInput: input
-    },
-    data() {
-      return {
-        editmode: false,
-        currentSkill: {
-          id: this.skill.id,
-          title: this.skill.title,
-          percent: this.skill.percent
-        }
-      }
+import input from "../input";
+import icon from "../icon";
+
+export default {
+  props: {
+    skill: {
+      type: Object,
+      default: () => {},
+      required: true
     }
-  }
+  },
+  data() {
+    return {
+      editmode: false,
+      currentSkill: {
+        id: 0,
+        title: this.skill.title,
+        percent: this.skill.percent
+      }
+    };
+  },
+  components: {
+    icon,
+    appInput: input,
+  },
+};
 </script>
 
-<style lang="postcss" src="./skill.pcss"></style>
+<style lang="postcss" src="./skill.pcss" scoped></style>
 
