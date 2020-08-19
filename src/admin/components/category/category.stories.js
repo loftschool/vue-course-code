@@ -2,7 +2,9 @@ import category from "./category"
 import { action } from "@storybook/addon-actions";
 
 const methods = {
-  onRemove: action("onRemove")
+  onRemove: action("onRemove"),
+  onRemoveSkill: action("onRemoveSkill"),
+  onEditSkill: action("onEditSkill"),
 }
 
 export default {
@@ -28,6 +30,8 @@ export const defaultView = () => ({
       :title="title"
       :skills="skills" 
       @remove="onRemove"
+      @remove-skill="onRemoveSkill"
+      @edit-skill="onEditSkill"
     /> 
   `,
   methods
