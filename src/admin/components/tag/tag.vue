@@ -3,7 +3,10 @@
     :class="['tag', {interactive: interactive}]"
   >
     <span>{{title}}</span>
-    <button v-if="interactive" class="remove" type="button"></button>
+    <button 
+      v-on="$listeners"
+      v-if="interactive" 
+      class="remove" type="button"></button>
   </div>
 </template>
 
