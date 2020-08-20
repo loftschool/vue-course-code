@@ -15,10 +15,6 @@ new Vue({
       sliderOptions: {
         slidesPerView: 2,
         loop: false
-      },
-      buttons: {
-        prev: false,
-        next: true
       }
     };
   },
@@ -44,12 +40,6 @@ new Vue({
           break;
       }
     },
-  },
-  mounted() {
-    this.slider.on("slideChange", (swiper) => {
-      this.buttons.prev = !swiper.isBeginning;
-      this.buttons.next = !swiper.isEnd;
-    })
   },
   created() {
     const data = require("../data/reviews.json");
