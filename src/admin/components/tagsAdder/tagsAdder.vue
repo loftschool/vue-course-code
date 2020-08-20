@@ -1,13 +1,21 @@
 <template>
   <div class="tags-adder-component">
     <app-input 
-      title="Добавление тэга" 
-      v-model="currentTags" 
+      title="Добавление тега" 
+      v-model="currentTags"
       @input="$emit('change', currentTags)"
     />
     <ul class="tags">
-      <li class="tag" v-for="( tag, index ) in tagsArray" :key="`${tag}${index}`">
-        <tag @click="removeTag(tag)" v-if="tag.trim()" :title="tag.toUpperCase()" interactive />
+      <li class="tag"
+        v-for="(tag, index) in tagsArray"
+        :key="`${tag}${index}`"
+        v-if="tag.trim()"
+      >
+        <tag
+          interactive 
+          :title="tag"
+          @click="removeTag(tag)"
+        /> 
       </li>
     </ul>
   </div>
@@ -16,10 +24,15 @@
 <script>
 import appInput from "../input";
 import tag from "../tag";
+
 export default {
+  components: {
+    appInput,
+    tag,
+  },
   props: {
     tags: {
-      type: String,
+      type: String, 
       default: ""
     }
   },
@@ -27,14 +40,14 @@ export default {
     prop: "tags",
     event: "change"
   },
-  computed: {
-    tagsArray() {
-      return this.tags.trim().split(",");
-    },
-  },
   data() {
     return {
-      currentTags : this.tags
+      currentTags: this.tags
+    }
+  },
+  computed: {
+    tagsArray() {
+      return this.currentTags.trim().split(',');
     }
   },
   methods: {
@@ -43,26 +56,23 @@ export default {
       const tagNdx = tags.indexOf(tag);
 
       if (tagNdx < 0) return;
-      this.tagsArray.splice(tagNdx, 1)
-      this.currentTags = this.tagsArray.join(", ");
+
+      tags.splice(tagNdx, 1);
+      this.currentTags = tags.join(", ");
 
       this.$emit("change", this.currentTags);
-    },
-  },
-  components: {
-    appInput,
-    tag,
-  },
+    }
+  }
 };
 </script>
 
 <style lang="postcss" scoped>
-.tags {
-  display: flex;
-  margin-top: 20px;
-}
+  .tags {
+    display: flex;
+    margin-top: 20px;
+  }
 
-.tag {
-  margin-right: 10px;
-}
+  .tag {
+    margin-right: 10px;
+  }
 </style>
