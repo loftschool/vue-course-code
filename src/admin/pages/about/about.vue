@@ -13,7 +13,11 @@
         </div>
         <ul class="skills">
           <li class="item" v-if="emptyCatIsShown">
-            <category @remove="emptyCatIsShown = false" empty />
+            <category 
+              @remove="emptyCatIsShown = false" 
+              @approve="createCategory"
+              empty 
+            />
           </li>
           <li class="item" v-for="category in categories" :key="category.id">
             <category :title="category.category" :skills="category.skills" />
@@ -28,6 +32,7 @@
 <script>
 import button from "../../components/button";
 import category from "../../components/category";
+import { mapActions } from "vuex";
 
 export default {
   components: {
@@ -39,6 +44,14 @@ export default {
       categories: [],
       emptyCatIsShown: false,
     };
+  },
+  methods: {
+    ...mapActions({
+      createCategoryAction: "categories/create"
+    }),
+    createCategory(categoryTitle) {
+      this.createCategoryAction(categoryTitle);
+    }
   },
   created() {
     this.categories = require("../../data/categories.json");
