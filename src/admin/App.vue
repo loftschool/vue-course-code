@@ -15,6 +15,8 @@
             title="Добавить группу"
           />
         </div>
+        <router-view name="header" />
+        <router-view />
         <ul class="skills">
           <li class="item" v-if="emptyCatIsShown">
             <category 

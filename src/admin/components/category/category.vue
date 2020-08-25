@@ -53,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
   .item {
     margin-bottom: 30px;
 
