@@ -23,7 +23,7 @@
             <category 
               :title="category.category" 
               :skills="category.skills" 
-              @create-skill="createSkill"
+              @create-skill="createSkill($event, category.id)"
               @edit-skill="editSkill"
               @remove-skill="removeSkill"
             />
@@ -66,14 +66,22 @@ export default {
       removeSkillAction: "skills/remove",
       editSkillAction: "skills/edit",
     }),
-    createSkill() {
-      this.addSkillAction();
+    async createSkill(skill, categoryId) {
+      const newSkill = {
+        ...skill,
+        category: categoryId
+      }
+      await this.addSkillAction(newSkill);
+
+      skill.title = "";
+      skill.percent = "";
     },
-    removeSkill() {
-      this.removeSkillAction();
+    removeSkill(skill) {
+      this.removeSkillAction(skill);
     },
-    editSkill() {
-      this.editSkillAction();
+    async editSkill(skill) {
+      await this.editSkillAction(skill);
+      skill.editmode = false;
     },
     async createCategory(categoryTitle) {
       try {
