@@ -47,7 +47,7 @@ export default {
   },
   computed: {
     tagsArray() {
-      return this.currentTags.trim().split(',');
+      return this.tags.trim().split(',');
     }
   },
   methods: {

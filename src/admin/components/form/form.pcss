@@ -1,0 +1,60 @@
+.form-cols {
+  display: flex;
+}
+
+.form-col {
+  width: 50%;
+  margin-right: 30px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+
+.uploader {
+  min-height: 276px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: #dee4ed;
+  border: 1px dashed #a1a1a1;
+  padding: 0 23%;
+  text-align: center;
+  position: relative;
+  background-size: cover;
+  
+  &.active {
+    .uploader-title {
+      background: rgba(#fff, .9);
+    }
+  }
+
+  &.hovered {
+    border-color: blue;
+  }
+}
+
+.uploader-title {
+  color: $text-color;
+  opacity: .5;
+  margin-bottom: 30px;
+}
+
+.form-row {
+  margin-bottom: 30px;
+}
+
+.form-btns {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn {
+  margin-right: 10px;
+
+  &:last-child {
+    margin-right: 0;
+  }
+}
+

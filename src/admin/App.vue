@@ -2,13 +2,13 @@
   <div class="app-container">
     <router-view name="header" />
     <router-view />
-    <div :class="['notify-container', {active: isTooltipShown}]">
+    <div :class="['notify-container', { active: isTooltipShown }]">
       <div class="notification">
-        <notification 
-          :text="tooltipText" 
+        <notification
+          :text="tooltipText"
           :type="tooltipType"
           @click="hideTooltip"
-         />
+        />
       </div>
     </div>
   </div>
@@ -21,8 +21,8 @@ export default {
   components: { notification },
   methods: {
     ...mapActions({
-      hideTooltip: "tooltips/hide"
-    })
+      hideTooltip: "tooltips/hide",
+    }),
   },
   computed: {
     ...mapState("tooltips", {
@@ -39,6 +39,30 @@ export default {
 @import "normalize.css";
 @import "../styles/mixins.pcss";
 @import "../styles/layout/base.pcss";
+
+.page-component {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-content {
+  padding: 60px 0 20px;
+  background: url("../images/bg/admin.jpg") center center / cover no-repeat;
+  flex: 1;
+}
+
+.page-title {
+  margin-right: 60px;
+  font-size: 21px;
+  font-weight: bold;
+  color: $text-color;
+}
+
+.page-header {
+  display: flex;
+  margin-bottom: 60px;
+}
 </style>
 
 <style lang="postcss" scoped src="./app.pcss"></style>

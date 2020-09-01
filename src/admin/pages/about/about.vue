@@ -1,9 +1,9 @@
 <template>
-  <div class="about-page-component">
+  <div class="about-page-component page-component">
     <div class="page-content">
       <div class="container" v-if="categories.length">
-        <div class="header">
-          <div class="title">Блок "Обо мне"</div>
+        <div class="page-header">
+          <div class="page-title">Блок "Обо мне"</div>
           <iconed-button
             type="iconed"
             v-if="emptyCatIsShown === false"
