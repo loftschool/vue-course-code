@@ -2,7 +2,7 @@
   <card simple>
     <div class="works-wrapper">
       <div class="pic">
-        <img class="image" :src="cover" />
+        <img class="image" :src="cover"/>
         <div class="tag">
           <tags-list :tags="work.techs"/>
         </div>

@@ -6,24 +6,17 @@
           <div class="form-cols">
             <div class="form-col">
               <label
-                :class="[
-                  'uploader',
-                  { active: newWork.preview },
-                  { hovered: hovered },
-                ]"
-                :style="{ backgroundImage: `url(${newWork.preview})` }"
-                @drop="handleUpload"
+                :style="{backgroundImage: `url(${newWork.preview})`}"
+                :class="[ 'uploader', {active: newWork.preview}, {
+                  hovered: hovered
+                }]"
                 @dragover="handleDragOver"
                 @dragleave="hovered = false"
+                @drop="handleChange"
               >
-                <div class="uploader-title">
-                  Перетащите или загрузитедля загрузки изображения
-                </div>
+                <div class="uploader-title">Перетащите или загрузите картинку</div>
                 <div class="uploader-btn">
-                  <app-button
-                    typeAttr="file"
-                    @change="handleUpload"
-                  ></app-button>
+                  <app-button typeAttr="file" @change="handleChange"></app-button>
                 </div>
               </label>
             </div>
@@ -35,11 +28,7 @@
                 <app-input v-model="newWork.link" title="Ссылка" />
               </div>
               <div class="form-row">
-                <app-input
-                  v-model="newWork.description"
-                  field-type="textarea"
-                  title="Описание"
-                />
+                <app-input v-model="newWork.description" field-type="textarea" title="Описание" />
               </div>
               <div class="form-row">
                 <tags-adder v-model="newWork.techs" />
@@ -86,36 +75,31 @@ export default {
     ...mapActions({
       addNewWork: "works/add",
     }),
+    handleDragOver(e) {
+      e.preventDefault();
+      this.hovered = true;
+    },
     async handleSubmit() {
       await this.addNewWork(this.newWork);
-
-      Object.keys(this.newWork).forEach(item => {
-        this.newWork[item] = "";
-      })
     },
-    handleUpload(event) {
+    handleChange(event) {
       event.preventDefault();
 
-      const file = event.dataTransfer
-        ? event.dataTransfer.files[0]
+      const file = event.dataTransfer 
+        ? event.dataTransfer.files[0] 
         : event.target.files[0];
 
       this.newWork.photo = file;
       this.renderPhoto(file);
-
       this.hovered = false;
     },
     renderPhoto(file) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
 
+      reader.readAsDataURL(file);
       reader.onloadend = () => {
         this.newWork.preview = reader.result;
       };
-    },
-    handleDragOver(e) {
-      e.preventDefault();
-      this.hovered = true;
     },
   },
 };

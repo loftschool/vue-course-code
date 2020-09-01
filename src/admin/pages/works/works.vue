@@ -8,7 +8,7 @@
           </div>
         </div>
         <div class="form">
-          <app-form @submit="handleSubmit" />
+          <app-form />
         </div>
         <ul class="cards">
           <li class="item" v-for="work in works" :key="work.id">
@@ -38,9 +38,6 @@ export default {
     ...mapActions({
       fetchWorks: "works/fetch"
     }),
-    async handleSubmit(newWork) {
-      await this.addNewWork();
-    },
   },
   mounted() {
     this.fetchWorks();
