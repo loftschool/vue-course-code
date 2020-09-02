@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`содержит нужные поля 1`] = `
+<div
+  class="edit-line-component"
+>
+  <div
+    class="title"
+  >
+    <div
+      class="text"
+    >
+      
+    </div>
+     
+    <div
+      class="icon"
+    >
+      <button
+        class="icon-component is-pencil grayscale no-words"
+        data-jest-id="edit"
+        data-text=""
+        type="button"
+      />
+    </div>
+  </div>
+</div>
+`;

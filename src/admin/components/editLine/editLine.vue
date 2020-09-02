@@ -31,6 +31,8 @@
 </template>
 
 <script>
+  import icon from "../icon";
+  import appInput from "../input";
 export default {
   props: {
     value: {
@@ -61,8 +63,8 @@ export default {
     },
   },
   components: {
-    icon: () => import("components/icon"),
-    appInput: () => import("components/input"),
+    icon,
+    appInput
   },
 };
 </script>

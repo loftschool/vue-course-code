@@ -19,15 +19,15 @@
               empty 
             />
           </li>
-          <li class="item" v-for="category in categories" :key="category.id">
-            <category 
-              :title="category.category" 
-              :skills="category.skills" 
-              @create-skill="createSkill($event, category.id)"
-              @edit-skill="editSkill"
-              @remove-skill="removeSkill"
-            />
-          </li>
+<!--          <li class="item" v-for="category in categories" :key="category.id">-->
+<!--            <category -->
+<!--              :title="category.category" -->
+<!--              :skills="category.skills" -->
+<!--              @create-skill="createSkill($event, category.id)"-->
+<!--              @edit-skill="editSkill"-->
+<!--              @remove-skill="removeSkill"-->
+<!--            />-->
+<!--          </li>-->
         </ul>
       </div>
       <div class="container" v-else>
@@ -40,13 +40,13 @@
 
 <script>
 import button from "../../components/button";
-import category from "../../components/category";
+// import category from "../../components/category";
 import { mapActions, mapState } from "vuex";
 
 export default {
   components: {
     iconedButton: button,
-    category,
+    category: () => import("../../components/category")
   },
   data() {
     return {
